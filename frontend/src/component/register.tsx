@@ -1,37 +1,49 @@
 import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const Register = (props) => {
   const { isLoggedIn, setIsLoggedIn, setName, setEmail } = props;
-  let navigate = useNavigate();
 
-  useEffect(() => {
-    if (isLoggedIn) navigate("profile");
-  });
-
-  const handleRegister = async (ev) => {
+  const handleRegister = async (ev: {
+    preventDefault: () => void;
+    target: {
+      name: { value: any };
+      email: { value: any };
+      password: { value: any };
+      confirmpassword: { value: any };
+    };
+  }) => {
     ev.preventDefault();
     const name = ev.target.name.value;
     const email = ev.target.email.value;
     const password = ev.target.password.value;
     const confirmpassword = ev.target.confirmpassword.value;
     if (password !== confirmpassword) toast.error("Passwords do not match !");
-    else{
+    else {
       const formData = {
         name: name,
         email: email,
         password: password,
       };
       try {
-        const res = await axios.post("http://localhost:8000/token/", formData);
+        const res = await axios.post("http://localhost:8000/token/", formData, {
+          headers: { "Content-Type": "application/json" },
+        });
         const data = res.data;
         if (data.success === true) {
           toast.success(data.message);
           setIsLoggedIn(true);
           setName(name);
           setEmail(email);
-          navigate("/profile");
+
+          // Initialize the access & refresh token in localstorage.
+          localStorage.clear();
+          localStorage.setItem("access_token", data.access);
+          localStorage.setItem("refresh_token", data.refresh);
+          axios.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${data["access"]}`;
+          window.location.href = "/";
         } else {
           toast.error(data.message);
         }
@@ -122,25 +134,6 @@ const Register = (props) => {
                   required
                 />
               </div>
-            </div>
-
-            <CountryInput />
-            <div className="max-w-xl">
-              <div className="mb-2 block">
-                <label htmlFor="phone" className="text-sm font-medium">
-                  Phone Number
-                </label>
-              </div>
-              <input
-                type="text"
-                id="phone"
-                name="phone"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
-                maxLength={10}
-                pattern="^[79][0-9]{9}"
-                placeholder="1234567890"
-                aria-errormessage="Phone number must start with 7 or 9"
-              />
             </div>
 
             <div className="flex items-start">
