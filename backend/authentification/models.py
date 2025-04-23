@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+# from django.contrib.auth.models import Piece
 
 # Create your models here.
 
@@ -23,3 +24,11 @@ class Identity(models.Model):
     expiry_date = models.DateField()
     is_validated = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+
+class PieceId(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
+    birth_date = models.DateField()
+    email = models.EmailField()
+    image = models.ImageField(upload_to='ids/')

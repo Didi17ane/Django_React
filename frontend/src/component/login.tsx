@@ -27,7 +27,9 @@ export const Login = () => {
       localStorage.setItem("access_token", data.access);
       localStorage.setItem("refresh_token", data.refresh);
       axios.defaults.headers.common["Authorization"] = `Bearer ${data["access"]}`;
-      window.location.href = "/";
+      // window.location.href = "/";
+      window.location.href = "piece_id/";
+
     } catch (e) {
       console.log("not authent");
       console.log(e);
@@ -38,8 +40,8 @@ export const Login = () => {
   return (
     <div className="Auth-form-container">
       <form className="Auth-form" onSubmit={submit}>
-        <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Sign In</h3>
+        <div className="Auth-form-content"><br/><br/>
+          <h3 className="Auth-form-title">Sign In</h3><br/><br/>
           <div className="form-group mt-3">
             <label>Username</label>
             <input
@@ -51,7 +53,7 @@ export const Login = () => {
               required
               onChange={(e) => setUsername(e.target.value)}
             />
-          </div>
+          </div><br/>
           <div className="form-group mt-3">
             <label>Password</label>
             <input
@@ -63,7 +65,7 @@ export const Login = () => {
               required
               onChange={(e) => setPassword(e.target.value)}
             />
-          </div>
+          </div><br/><br/>
           <div className="d-grid gap-2 mt-3">
             <button type="submit" className="btn btn-primary">
               Submit

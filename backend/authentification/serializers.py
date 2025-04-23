@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Identity
+from .models import Identity, PieceId
 from django.contrib.auth.models import User
 
 class UserSerializer(serializers.ModelSerializer):
@@ -16,6 +16,14 @@ class RegisterSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
         return user
+class PieceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PieceId
+        fields = ['name', 'lastname', 'birth_date', 'email', 'image']
+
+    def create(self, validated_data):
+        piece = PieceId.objects.create_piece(**validated_data)
+        return piece
 
 class IdentitySerializer(serializers.ModelSerializer):
     class Meta:

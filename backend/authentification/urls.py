@@ -9,6 +9,7 @@ router = DefaultRouter()
 
 urlpatterns = [
     path('', include(router.urls)),
+    path("piece_id/", views.PieceIdView.as_view(), name="piece_id"),
     path("register/", views.RegisterView.as_view(), name="register"),
     path('home/', views.HomeView.as_view(), name ='home'),
     path('logout/', views.LogoutView.as_view(), name ='logout')
