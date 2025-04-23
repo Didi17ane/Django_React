@@ -10,11 +10,14 @@ export const Home = () => {
     } else {
       (async () => {
         try {
+          const tok=localStorage.getItem("access_token");
+          axios.defaults.headers.common["Authorization"] = `Bearer ${tok}`;
           const { data } = await axios.get("http://localhost:8000/home/", {
             headers: {
               "Content-Type": "application/json",
             },
           });
+          console.log(data)
           setMessage(data.message);
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
