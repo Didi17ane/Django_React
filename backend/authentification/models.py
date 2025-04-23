@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -11,13 +12,14 @@ class Token(models.Model):
     is_used = models.BooleanField(default=False)
 
 
-class User(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=255)
-    phone = models.CharField(max_length=10, null=True)
-    country = models.CharField(max_length=63)
-
-    def __str__(self) -> str:
-        return self.name
+class Identity(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=100)
+    birth_date = models.DateField()
+    email = models.EmailField()
+    image = models.ImageField(upload_to='ids/')
+    id_number = models.CharField(max_length=50)
+    id_type = models.CharField(max_length=50)
+    expiry_date = models.DateField()
+    is_validated = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)

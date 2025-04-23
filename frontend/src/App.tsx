@@ -4,7 +4,7 @@ import { Login } from "./component/login";
 import { Home } from "./component/home";
 import { Navigation } from "./component/navigation";
 import { Logout } from "./component/logout";
-import { Register } from "./component/register.tsx";
+import Register from "./component/register";
 
 function App() {
   return (

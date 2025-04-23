@@ -16,16 +16,17 @@ export const Home = () => {
             },
           });
           setMessage(data.message);
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
           console.log("not auth");
+          console.log(e);
         }
       })();
     }
   }, []);
   return (
-  <div className="form-signin mt-5 text-center">
-    <h3>Hi {message}</h3>
-  </div>
-  ) ;
+    <div className="form-signin mt-5 text-center">
+      <h3>Hi {message}</h3>
+    </div>
+  );
 };
