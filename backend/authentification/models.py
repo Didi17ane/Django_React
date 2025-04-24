@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 from django.contrib.auth.models import User
 # from django.contrib.auth.models import Piece
 
@@ -14,14 +15,15 @@ class Token(models.Model):
 
 
 class Identity(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    full_name = models.CharField(max_length=100)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    lastname = models.CharField(max_length=100)
     birth_date = models.DateField()
     email = models.EmailField()
     image = models.ImageField(upload_to='ids/')
-    id_number = models.CharField(max_length=50)
-    id_type = models.CharField(max_length=50)
-    expiry_date = models.DateField()
+    number_piece = models.CharField(max_length=50)
+    type_piece = models.CharField(max_length=50)
+    expiry_date = models.DateField(default=None, blank=True, null=True)
     is_validated = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 

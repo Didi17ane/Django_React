@@ -48,8 +48,9 @@ class RegisterView(generics.CreateAPIView):
             )
 
 class PieceIdView(generics.CreateAPIView):
+    serializer_class = PieceSerializer
     def post(self, request):
-        print(request.data)
+        print('*'*10,type(request.data['image']))
         
         serializer = PieceSerializer(data=request.data)
         if serializer.is_valid():
@@ -58,11 +59,11 @@ class PieceIdView(generics.CreateAPIView):
                 {"success": True, "message": "Your infos are now registered on our Database!"},
             )
         else:
-            error_msg = ""
-            for key in serializer.errors:
-                error_msg += serializer.errors[key][0]
+            # error_msg = ""
+            # for key in serializer.errors:
+            #     error_msg += serializer.errors[key][0]
             return Response(
-                {"success": False, "message": error_msg},
+                {"success": False, "message":serializer.errors},
             )
         
 class IdentityViewSet(viewsets.ModelViewSet):

@@ -13,15 +13,21 @@
     "@tailwindcss/vite": "^4.1.4",
     "axios": "^1.8.4",
     "bootstrap": "^5.3.5",
+    "buffer": "^6.0.3",
+    "image-to-base64": "^2.2.0",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.5.1",
+    "react-tesseract": "^1.0.2",
     "react-toastify": "^11.0.5",
-    "tailwindcss": "^4.1.4"
+    "tailwindcss": "^4.1.4",
+    "tesseract.js": "^6.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
+    "@types/image-to-base64": "^2.1.2",
+    "@types/node": "^22.14.1",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",

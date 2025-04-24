@@ -18,11 +18,11 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 class PieceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PieceId
+        model = Identity
         fields = ['name', 'lastname', 'birth_date', 'email', 'image']
 
     def create(self, validated_data):
-        piece = PieceId.objects.create_piece(**validated_data)
+        piece = Identity.objects.create(**validated_data)
         return piece
 
 class IdentitySerializer(serializers.ModelSerializer):
