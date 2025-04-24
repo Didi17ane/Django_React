@@ -18,7 +18,6 @@ const Ident = () => {
   }; // This function will be triggered when the "Remove This Image" button is clicked
   const removeSelectedImage = () => {
     setImage();
-    image= setImage();
   };
   const handleIdent = async () => {
     // if (!Ident){
@@ -66,6 +65,8 @@ const Ident = () => {
 
   return (
     <div>
+      <br />
+      <br />
       <h3 className="Auth-form-title">Identity Infos</h3>
       <input
         placeholder="Name"
@@ -99,7 +100,7 @@ const Ident = () => {
       <div className="row">
         <form onSubmit={onNext} className="form-inline">
           <div className="form-group">
-            <label>Choose File to Upload: </label>
+            <label>Insert your Piece Identity: </label>
             <input
               type="file"
               id="file-upload"

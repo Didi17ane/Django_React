@@ -23,13 +23,8 @@ const Register = () => {
           });
 
           console.log('register is callled')
-          // console.log(data)
-          localStorage.clear();
-          localStorage.setItem("access_token", data.access);
-          localStorage.setItem("refresh_token", data.refresh);
-          axios.defaults.headers.common[
-            "Authorization"
-          ] = `Bearer ${data["access"]}`;
+          console.log(data)
+          
           window.location.href = "login/";
         } catch (e) {
           console.log("not register");
@@ -41,6 +36,7 @@ const Register = () => {
   
   return (
     <div><br/><br/>
+
     <h3 className="Auth-form-title">Sign On</h3><br/><br/>
     <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} /><br/><br/>
     <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} /><br/><br/>
@@ -49,6 +45,68 @@ const Register = () => {
     <button onClick={handleRegister}>Register</button>
     <ToastContainer />
   </div>
+
+  //  <div className="Auth-form-container">
+  //     <form className="Auth-form" onSubmit={handleRegister}>
+  //       <div className="Auth-form-content"><br/><br/>
+  //         <h3 className="Auth-form-title">Sign On</h3><br/><br/>
+  //         <div className="form-group mt-3">
+  //           <label>Username</label>
+  //           <input
+  //             className="form-control mt-1"
+  //             placeholder="Enter Username"
+  //             name="username"
+  //             type="text"
+  //             value={username}
+  //             required
+  //             onChange={(e) => setUsername(e.target.value)}
+  //           />
+  //         </div><br/>
+  //         <div className="form-group mt-3">
+  //           <label>Email</label>
+  //           <input
+  //             className="form-control mt-1"
+  //             placeholder="Email"
+  //             name="email"
+  //             type="email"
+  //             value={email}
+  //             required
+  //             onChange={(e) => setEmail(e.target.value)}
+  //           />
+  //         </div><br/>
+  //         <div className="form-group mt-3">
+  //           <label>Password</label>
+  //           <input
+  //             name="password"
+  //             type="password"
+  //             className="form-control mt-1"
+  //             placeholder="Enter password"
+  //             value={password}
+  //             required
+  //             onChange={(e) => setPassword(e.target.value)}
+  //           />
+  //         </div><br/><br/>
+  //         <div className="form-group mt-3">
+  //           <label>Confirm Password</label>
+  //           <input
+  //             name="confirmpassword"
+  //             type="password"
+  //             className="form-control mt-1"
+  //             placeholder="Confirm Password"
+  //             value={confirmpassword}
+  //             required
+  //             onChange={(e) => setconfirmPassword(e.target.value)}
+  //           />
+  //         </div><br/><br/>
+  //         <div className="d-grid gap-2 mt-3">
+  //           <button type="submit" className="btn btn-primary">
+  //           Register
+  //           </button>
+  //         </div>
+  //       </div>
+  //     </form>
+  //     <ToastContainer />
+  //   </div>
   );
 };
 
