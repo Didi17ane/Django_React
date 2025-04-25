@@ -38,17 +38,6 @@ const Register = () => {
     };
   
   return (
-  //   <div><br/><br/>
-
-  //   <h3 className="Auth-form-title">Sign On</h3><br/><br/>
-  //   <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} /><br/><br/>
-  //   <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} /><br/><br/>
-  //   <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} /><br/><br/>
-  //   <input type="password" placeholder="Confirm Password" value={confirmpassword} onChange={(e) => setconfirmPassword(e.target.value)} /><br/><br/>
-  //   <button onClick={handleRegister}>Register</button>
-  //   <ToastContainer />
-  // </div>
-
    <div className="Auth-form-container">
       <form className="Auth-form" onSubmit={handleRegister}>
         <div className="Auth-form-content"><br/><br/>
