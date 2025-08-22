@@ -19,7 +19,7 @@ export const Home = () => {
           });
           console.log(data)
           setMessage(data.message);
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+           
         } catch (e) {
           console.log("not auth");
           console.log(e);
